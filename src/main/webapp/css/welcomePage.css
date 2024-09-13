@@ -1,0 +1,26 @@
+body {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 99vw;
+  height: 97vh;
+}
+
+.screen {
+  border: 1px solid black;
+  width: 40vw;
+  height: 87vh;
+  max-width: 40vw;
+  max-height: 87vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonsRow {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row-reverse;
+}

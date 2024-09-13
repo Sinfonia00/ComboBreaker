@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  .bd {
+    border: 1px solid black;
+    padding: 1rem;
+  }
+  .mainScreen {
+    display: block;
+    height: 100%;
+    background-color: green;
+  }
+  .secondaryScreen {
+    display: grid;
+    grid-template-columns: auto auto ;
+    grid-template-rows: auto;
+    gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  .secondaryScreen > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+
+  .moveIcon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+
+  .moveIcon.chosen{
+    background-color: red;
+  }
+  .moveIcon.choosing{
+    background-color: blue;
+  }
+  button.choosing:hover {
+    background-color: yellow;
+  }
+</style>
+<body class="bd" style="padding: 10rem 20vw 10rem 20vw;">
+
+  <div>
+
+    <div class="mainScreen bd">
+
+      <p style="text-align: center; height: 30vh;">main screen</p>
+
+      <p id="combo" style="height: 3rem;">
+
+      </p>
+
+    </div>
+
+    <div class="secondaryScreen bd">
+      <div class=" bd">
+        <button value="1" onclick="prova(this);">
+          MOVE 1
+        </button>
+      </div>
+      <div class=" bd">
+        <button value="2" onclick="prova(this);">
+          MOVE 2
+        </button>
+      </div>
+      <div class=" bd">
+        <button value="3" onclick="prova(this);">
+          MOVE 3
+        </button>
+      </div>
+      <div class=" bd">
+        <button value="4" onclick="prova(this);">
+          MOVE 4
+        </button>
+      </div>
+    </div>
+
+    <div>
+
+      <button onclick="mostraSkill()">
+        ATK
+      </button>
+      <button onclick="mostraArray()">
+        mostra
+      </button>
+
+    </div>
+
+  </div>
+
+
+</body>
+<script>
+  const confirmedMoves = [];
+  const tmpMoves = []; selectedMoves
+
+  function prova(el){
+    let elementId = tmpMoves.length;
+    let moveIcon = "<button id="+elementId+" class='moveIcon choosing' onclick='removeMove(this)'>"+el.value+"</button>";
+    tmpMoves[tmpMoves.length] = el.value;
+    document.getElementById("combo").innerHTML += moveIcon;
+  }
+
+  function mostraSkill(){
+    for(var i=0; i<tmpMoves.length; i++){
+      document.getElementById(i).classList.remove("choosing");
+      document.getElementById(i).classList.add("chosen");
+      document.getElementById(i).removeAttribute("onclick");
+      document.getElementById(i).id = "confirmedMove"+confirmedMoves.length;
+      confirmedMoves[confirmedMoves.length] = tmpMoves[i];
+    }
+    tmpMoves.length = [];
+  }
+
+  function mostraArray(){
+    alert("confirmedMoves: "+confirmedMoves);
+    alert("tmpMoves: "+tmpMoves);
+  }
+
+  function removeMove(element){
+    let index = element.id;
+    element.parentNode.removeChild(element);
+
+    for(var i=index; i<(tmpMoves.length-1); i++){
+      tmpMoves[i] = tmpMoves[(Number(i)+Number(1))];
+      document.getElementById((Number(i)+Number(1))).id = i;
+    }
+
+    tmpMoves.length = tmpMoves.length-Number(1);
+  }
+
+
+
+</script>
+</html>

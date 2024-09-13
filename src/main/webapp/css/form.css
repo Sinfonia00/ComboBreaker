@@ -1,0 +1,36 @@
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title {
+  color: red;
+  font-size: 5vh;
+}
+
+.sub-title {
+  color: green;
+  font-size: 3vh;
+}
+
+.field {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  row; width: 25vw;
+  padding: 10px;
+}
+
+.field label {
+  border: 1px solid black;
+
+}
+
+.field input {
+  border: 1px solid black;
+}
+
+
